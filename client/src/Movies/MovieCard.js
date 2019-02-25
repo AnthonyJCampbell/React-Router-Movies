@@ -8,7 +8,6 @@ const Header = ({ movieId, title, movieList}) => {
 }
 
 const MovieCard = ({ movie, movieList }) => {
-  if (movieList) {
     return (
       <div className="movie-card">
         <Header movieId={movie.id} title={movie.title} movieList={movieList} />
@@ -27,27 +26,6 @@ const MovieCard = ({ movie, movieList }) => {
           })}
       </div>
     )
-  }
-  else {
-    return (
-      <div className="movie-card">
-          <h2>{movie.title}</h2>
-          <div className="movie-director">
-            Director: <em>{movie.director}</em>
-          </div>
-          <div className="movie-metascore">
-            Metascore: <strong>{movie.metascore}</strong>
-          </div>
-          <h3>Actors</h3>
-
-          {movie.stars.map(star => {
-            return (<div key={star} className="movie-star">
-              {star}
-            </div>);
-          })}
-      </div>
-    )
-  }
 };
 
 export default MovieCard;
