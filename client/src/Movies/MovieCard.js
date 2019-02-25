@@ -2,16 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Header = ({ movieId, title, movieList}) => {
-  if (movieList) {
-    return (
-      <Link to={`/movies/${movieId}`} >
-        <h2>{title}</h2>
-      </Link>
-    );
-  }
-  return (
-    <h2>{title}</h2>
-  )
+  return movieList ? (
+    <Link to={`/movies/${movieId}`}><h2>{title}</h2></Link>) :
+    (<h2>{title}</h2>)
 }
 
 const MovieCard = ({ movie, movieList }) => {
