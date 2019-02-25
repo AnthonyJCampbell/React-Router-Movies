@@ -1,13 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+const Header = ({ movieId, title, movieList}) => {
+  if (movieList) {
+    return (
+      <Link to={`/movies/${movieId}`} >
+        <h2>{title}</h2>
+      </Link>
+    );
+  }
+  return (
+    <h2>{title}</h2>
+  )
+}
+
 const MovieCard = ({ movie, movieList }) => {
   if (movieList) {
     return (
       <div className="movie-card">
-        <Link to={`/movies/${movie.id}`} >
-          <h2>{movie.title}</h2>
-        </Link>
+        <Header movieId={movie.id} title={movie.title} movieList={movieList} />
           <div className="movie-director">
             Director: <em>{movie.director}</em>
           </div>
@@ -17,7 +28,6 @@ const MovieCard = ({ movie, movieList }) => {
           <h3>Actors</h3>
 
           {movie.stars.map(star => {
-            console.log(star);
             return (<div key={star} className="movie-star">
               {star}
             </div>);
